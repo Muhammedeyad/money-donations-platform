@@ -1,6 +1,7 @@
 const PORT = 5000
 const express = require("express")
 const app = express()
+const cookieParser = require('cookie-parser')
 const dotenv = require('dotenv')
 const { connectToDb }= require('./db/connecttodb')
 dotenv.config()
@@ -8,6 +9,9 @@ dotenv.config()
 
 // middlewares
 app.use(express.json())
+app.use(cookieParser())
+
+
 
 //  app routers 
 app.use("/", require('./routers/auth'))

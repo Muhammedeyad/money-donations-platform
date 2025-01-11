@@ -1,6 +1,7 @@
 
 const bcrypt = require('bcrypt')
 const authModel = require('../models/authModel')
+const { generatingCookie } = require('../utils/generatingCookie')
 
 const userRegister = async (req, res) => {
     try {
@@ -14,7 +15,7 @@ const userRegister = async (req, res) => {
                 password: bcryptPassword,
                 confirmPassword: bcryptPassword
             })
-            await user.save()
+            await generatingCookie(user._id, res)
             return res.status(200).json(user)
         }
         res.status(400).json({ error: "this username already exists" })
@@ -23,7 +24,23 @@ const userRegister = async (req, res) => {
         console.log("comes from auth router", error.message);
     }
 }
-const userLogin = (req, res) => {
-    res.send('signin success')
+
+const userLogin =async (req, res) => {
+ try {
+    const { username, password } = req.body
+    const registerdUser = await authModel.findOne({username})
+    if(!registerdUser) return res.status(400).json({error: "username is incorrect"})
+    const isSame = await bcrypt.compare(password, registerdUser.password)
+    if(isSame){
+        await generatingCookie()
+        return res.status(200).json(registerdUser)
+    }
+    res.status(400).json({error: "make sure password is correct "})
+
+ } catch (error) {
+    return res.status(400).json({error: "error came from login route"})
+    console.log("error came from login route", error.message);
+    
+ }
 }
 module.exports = { userRegister, userLogin }
