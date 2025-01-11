@@ -2,6 +2,7 @@
 const bcrypt = require('bcrypt')
 const authModel = require('../models/authModel')
 const { generatingCookie } = require('../utils/generatingCookie')
+const authAdmin = require('../models/authAdmin')
 
 const userRegister = async (req, res) => {
     try {
@@ -32,7 +33,7 @@ const userLogin =async (req, res) => {
     if(!registerdUser) return res.status(400).json({error: "username is incorrect"})
     const isSame = await bcrypt.compare(password, registerdUser.password)
     if(isSame){
-        await generatingCookie()
+        await generatingCookie(registerdUser, res)
         return res.status(200).json(registerdUser)
     }
     res.status(400).json({error: "make sure password is correct "})
@@ -43,4 +44,48 @@ const userLogin =async (req, res) => {
     
  }
 }
-module.exports = { userRegister, userLogin }
+
+
+
+const adminRegister = async (req, res) => {
+    try {
+        const { username, password, confirmPassword } = req.body
+        if (password != confirmPassword) return res.status(400).json({ message: "ensure confirmpassword is same" })
+        const existingUser = await authAdmin.findOne({ username: username })
+        if (!existingUser) {
+            const bcryptPassword = await bcrypt.hash(password, 8)
+            const user = await authAdmin.create({
+                username: username,
+                password: bcryptPassword,
+                confirmPassword: bcryptPassword
+            })
+
+            await generatingCookie(user._id, res)
+            return res.status(200).json(user)
+        }
+        res.status(400).json({ error: "this username already exists" })
+    } catch (error) {
+        res.status(400).json({ error: "error comes from auth router" })
+        console.log("comes from auth router", error.message);
+    }
+}
+
+const adminLogin =async (req, res) => {
+    try {
+       const { username, password } = req.body
+       const registerdUser = await authAdmin.findOne({username})
+       if(!registerdUser) return res.status(400).json({error: "username is incorrect"})
+       const isSame = await bcrypt.compare(password, registerdUser.password)
+       if(isSame){
+           await generatingCookie(registerdUser, res)
+           return res.status(200).json(registerdUser)
+       }
+       res.status(400).json({error: "make sure password is correct "})
+   
+    } catch (error) {
+       return res.status(400).json({error: "error came from login route"})
+       console.log("error came from login route", error.message);
+       
+    }
+   }
+module.exports = { userRegister, userLogin, adminRegister, adminLogin}
