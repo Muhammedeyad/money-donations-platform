@@ -1,7 +1,7 @@
 import React from 'react'
 import pic from "./../../../assets/images/Authimages/donationpic.png"
 
-export const Login = () => {
+export const Register = () => {
   return (
     <div className='bg-sk'>
     <div className='w-full flex flex-col md:flex-row  h-screen items-center justify-center'>
@@ -15,7 +15,7 @@ export const Login = () => {
 
       <div className='md:w-1/2 w-full p-10 md:p-0 md:mr-24 mb-10 md:ml-20'>
         <div>
-          <h4 className='text-center font-medium font-sans text-3xl md:text-4xl mb-10 text-sky-400 '>Login here</h4>
+          <h4 className='text-center font-medium font-sans text-3xl md:text-4xl mb-10 text-sky-400 '>Register here</h4>
           <div className='flex flex-col gap-7'>
 
             <label className="input input-bordered flex items-center gap-2">
@@ -56,7 +56,7 @@ export const Login = () => {
               <input type="password" className="grow" placeholder='confirmPassword' />
             </label>
           </div>
-          <button className="btn  bg-sky-300 mt-10 w-full font-medium  text-xl text-md hover:bg-sky-200 text-white">Login</button>
+          <button className="btn  bg-sky-300 mt-10 w-full font-medium  text-xl text-md hover:bg-sky-200 text-white">Register</button>
         </div>
       </div>
     </div>
