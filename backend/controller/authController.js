@@ -88,4 +88,15 @@ const adminLogin =async (req, res) => {
        
     }
    }
-module.exports = { userRegister, userLogin, adminRegister, adminLogin}
+
+
+const logout =(req, res)=>{
+    try {
+        res.cookie("auth", "", { maxAge: 0})
+        res.status(200).json("logout successfully")
+    } catch (error) {
+        console.log(error.message, "error while logout");
+        res.status(400).json({error: "error while logout"})
+    }
+}
+module.exports = { userRegister, userLogin, adminRegister, adminLogin, logout}

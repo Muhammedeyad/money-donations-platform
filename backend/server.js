@@ -15,7 +15,8 @@ app.use(cookieParser())
 
 //  app routers 
 app.use("/", require('./routers/auth'))
-
+app.use("/api/campaign", require("./routers/campaignRoute"))
+app.use("/api/admin", require("./routers/campaignRoute"))
 
 // app listening
 app.listen(PORT, ()=>{
