@@ -50,4 +50,22 @@ const setCammpaignStatusRejected = async (req, res) => {
         console.log("error comes from admin updating reject campaign router", error.message);
     }
 }
-module.exports = { getAllCampaigns, setCammpaignStatusApproved, setCammpaignStatusRejected}
+
+const setCammpaignStatusClosed = async (req, res) => {
+    try {
+        const authAdminId = req.userId
+        const {id:camapaignId}= req.params
+
+        if(!authAdminId) return res.status(400).json({error: "un-authorized user"})
+        const ExistingCampaign = await campaignSchema.findOne({_id: camapaignId})
+        if(!ExistingCampaign) return res.status(400).json({error: "no campaign found at this time"})
+        ExistingCampaign.status = "Closed"
+        await ExistingCampaign.save()
+        res.status(200).json(ExistingCampaign)
+
+    } catch (error) {
+        res.status(400).json({ error: "error comes from admin updating reject campaign router" })
+        console.log("error comes from admin updating reject campaign router", error.message);
+    }
+}
+module.exports = { getAllCampaigns, setCammpaignStatusApproved, setCammpaignStatusRejected, setCammpaignStatusClosed}
