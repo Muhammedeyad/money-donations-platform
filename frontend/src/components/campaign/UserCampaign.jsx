@@ -4,7 +4,7 @@ import { Dashboard } from '../../pages/user/campaign/Dashboard'
 import { DonatePerson } from '../../pages/user/donation/DonatePerson'
 import { Link } from 'react-router-dom'
 
-export const Campaign = () => {
+export const UserCampaign = () => {
     
     return (
         <tr>
@@ -32,7 +32,7 @@ export const Campaign = () => {
         <td>12000</td>
         <td>999</td>
         <th>
-            <Link to={'/user/makeDonation'} className="btn bg-green-400 hover:bg-green-200 text-sm text-white px-4 py-2 ">Donate Now</Link>
+            <Link onClick={()=> confirm("do you want to delete")} className="btn hover:bg-red-400 text-sm bg-red-600 text-white px-4 py-2 ">Delete</Link>
         </th>
     </tr>
     )
