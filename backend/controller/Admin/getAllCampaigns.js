@@ -5,6 +5,8 @@ const getAllCampaigns = async (req, res) => {
         const authAdminId = req.userId
         if(!authAdminId) return res.status(400).json({error: "un-authorized user"})
         const AllExistingSchema = await campaignSchema.find()
+    
+    
         if (!AllExistingSchema) return res.status(200).json([])
         res.status(200).json(AllExistingSchema)
     } catch (error) {
@@ -18,7 +20,6 @@ const setCammpaignStatusApproved = async (req, res) => {
     try {
         const authAdminId = req.userId
         const {id:camapaignId}= req.params
-
         if(!authAdminId) return res.status(400).json({error: "un-authorized user"})
         const ExistingCampaign = await campaignSchema.findOne({_id: camapaignId})
         if(!ExistingCampaign) return res.status(400).json({error: "no campaign found at this time"})
@@ -37,7 +38,8 @@ const setCammpaignStatusRejected = async (req, res) => {
     try {
         const authAdminId = req.userId
         const {id:camapaignId}= req.params
-
+        console.log();
+        
         if(!authAdminId) return res.status(400).json({error: "un-authorized user"})
         const ExistingCampaign = await campaignSchema.findOne({_id: camapaignId})
         if(!ExistingCampaign) return res.status(400).json({error: "no campaign found at this time"})

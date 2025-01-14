@@ -1,4 +1,10 @@
- <div className="w-full flex flex-row min-h-screen">
+import React from 'react'
+import UserSideBar from '../../../components/sidebar/Usersidebar';
+import { Campaign } from '../../../components/campaign/campaign';
+import { UserCampaign } from '../../../components/campaign/UserCampaign';
+export const CreatesCampaign = () => {
+    return (
+        <div className="w-full flex flex-row min-h-screen">
             {/* Sidebar */}
             <UserSideBar />
             {/* Main Content */}
@@ -49,3 +55,5 @@
                 </div>
             </div>
         </div>
+    )
+}

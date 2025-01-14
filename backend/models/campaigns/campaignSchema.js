@@ -2,8 +2,8 @@ const mongoose = require('mongoose')
 
 
 const campaignSchema = new mongoose.Schema({
-    title: { type: String, required: true},
-    description: { type: String, required: true},
+    fullName: { type: String, required: true},
+    purpose: { type: String, required: true},
     goalAmount: { type: Number, required: true},
     currentAmount: { type: Number, default: 0},
     status: { type: String, enum:["Pending", "Approved", "Rejected", "Closed"], default: "Pending"},

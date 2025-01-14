@@ -4,9 +4,13 @@ import { Homeimage } from '../../../components/svgContainer/Homeimage'
 
 import { Campaign } from '../../../components/campaign/campaign';
 import UserSideBar from '../../../components/sidebar/Usersidebar';
+import { userGetApprovedCampaings } from '../../../hooks/userGetApprovedCampaings';
 
 export const Dashboard = ({showDonateForm}) => {
-
+  const {loading, campaigns} = userGetApprovedCampaings()
+  
+  
+  
     return (
         <div className="w-full flex flex-row min-h-screen">
         {/* Sidebar */}
@@ -42,8 +46,10 @@ export const Dashboard = ({showDonateForm}) => {
                     </tr>
                 </thead>
                 <tbody className=''>
-                 <Campaign/>
-                 <Campaign/>
+                 
+                 {campaigns?.map((campaign)=>(
+                  <Campaign campaign={campaign}/>
+                 ))}
                 
                  
                 </tbody>

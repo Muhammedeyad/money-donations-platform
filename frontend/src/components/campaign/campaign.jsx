@@ -4,7 +4,8 @@ import { Dashboard } from '../../pages/user/campaign/Dashboard'
 import { DonatePerson } from '../../pages/user/donation/DonatePerson'
 import { Link } from 'react-router-dom'
 
-export const Campaign = () => {
+export const Campaign = ({campaign}) => {
+
     
     return (
         <tr>
@@ -19,18 +20,18 @@ export const Campaign = () => {
                     </div>
                 </div>
                 <div>
-                    <div className="font-bold">Alberto</div>
+                    <div className="font-bold">{campaign.fullName}</div>
                     <div className="text-sm opacity-50">India</div>
                 </div>
             </div>
         </td>
         <td>
-          For Education
+          {campaign.purpose}
             <br />
-            <span className="badge badge-ghost badge-sm">Bcom Accontant</span>
+            <span className="badge badge-ghost badge-sm">Kindness</span>
         </td>
-        <td>12000</td>
-        <td>999</td>
+        <td>{campaign.goalAmount}</td>
+        <td>{campaign.currentAmount}</td>
         <th>
             <Link to={'/user/makeDonation'} className="btn bg-green-400 hover:bg-green-200 text-sm text-white px-4 py-2 ">Donate Now</Link>
         </th>

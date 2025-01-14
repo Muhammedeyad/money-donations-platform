@@ -10,7 +10,7 @@ router.get("/campaigns", getAuthUser, gettingApprovedCampaigns)  //getting appro
 router.get("/mycampaigns", getAuthUser, getMyCampaigns) //getting my campaigns 
 
 // admin routes
-router.get("/campaigns",getAuthUser,  getAllCampaigns) //get all campaigns for admins
+router.get("/campaignsAdmin",getAuthUser,  getAllCampaigns) //get all campaigns for admins
 router.post("/campaigns/:id/approve", getAuthUser, setCammpaignStatusApproved) //update campaign status to approved => admins
 router.post("/campaigns/:id/reject", getAuthUser, setCammpaignStatusRejected) //update campaign status to rejected => admins
 router.post("/campaigns/:id/close", getAuthUser, setCammpaignStatusClosed) //update campaign status to rejected => admins
