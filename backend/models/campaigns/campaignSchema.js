@@ -8,6 +8,8 @@ const campaignSchema = new mongoose.Schema({
     currentAmount: { type: Number, default: 0},
     status: { type: String, enum:["Pending", "Approved", "Rejected", "Closed"], default: "Pending"},
     reason: { type: String, required: true},
+    place: { type: String, required: true},
+    address: { type: String, required: true},
     createdBy: {type: mongoose.Schema.ObjectId, ref: "user"}, //findout who made the campaign
 }, {timestamps: true})
 

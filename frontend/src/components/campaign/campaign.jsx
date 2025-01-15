@@ -3,9 +3,10 @@ import donationpic from '../../assets/images/Authimages/4090662.jpg'
 import { Dashboard } from '../../pages/user/campaign/Dashboard'
 import { DonatePerson } from '../../pages/user/donation/DonatePerson'
 import { Link } from 'react-router-dom'
+import { useUserZustands } from '../../zustand/useUserZustands'
 
 export const Campaign = ({campaign}) => {
-
+const {selectedCampaign, setSelectedCampaign}= useUserZustands()
     
     return (
         <tr>
@@ -33,7 +34,7 @@ export const Campaign = ({campaign}) => {
         <td>{campaign.goalAmount}</td>
         <td>{campaign.currentAmount}</td>
         <th>
-            <Link to={'/user/makeDonation'} className="btn bg-green-400 hover:bg-green-200 text-sm text-white px-4 py-2 ">Donate Now</Link>
+            <Link onClick={()=>setSelectedCampaign(campaign)} to={'/user/makeDonation'}  className="btn bg-green-400 hover:bg-green-200 text-sm text-white px-4 py-2 ">Donate Now</Link>
         </th>
     </tr>
     )

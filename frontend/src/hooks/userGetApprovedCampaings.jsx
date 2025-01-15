@@ -8,7 +8,7 @@ export const userGetApprovedCampaings = () => {
         async function getApprovedCampaigns() {
             setLoading(true)
             try {
-                const res = await fetch("http://localhost:5000/api/admin/campaignsAdmin", {
+                const res = await fetch("http://localhost:5000/api/campaign/campaigns", {
                     method: 'GET',
                     credentials: 'include',
                     headers: {

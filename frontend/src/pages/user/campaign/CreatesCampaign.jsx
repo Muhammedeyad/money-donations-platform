@@ -24,11 +24,17 @@ export const CreatesCampaign = () => {
                             <input type="text" className=' px-3 py-2 w-full mx-5 outline-none' placeholder='Goal Amount' />
                         </div>
                         <div>
-                            <textarea type="text" className=' px-3 py-5 w-full mx-5 outline-none' placeholder='Add a Reference' />
+                            <input type="text" className=' px-3 py-2 w-full mx-5 outline-none' placeholder='place' />
+                        </div>
+                        <div>
+                            <input type="text" className=' px-3 py-2 w-full mx-5 outline-none' placeholder='address' />
+                        </div>
+                        <div>
+                            <textarea type="text" className=' px-3 py-3 w-full mx-5 outline-none' placeholder='Reason for apply' />
                         </div>
 
 
-                        <button className='btn bg-green-400 rounded-2xl w-1/2 text-white mx-2'>Add Campaign</button>
+                        <button className='btn bg-green-400 rounded-2xl w-1/2 text-white mx-2'>Apply Now</button>
                     </form>
                     <div className='w-full ml-10 flex flex-col cursor-pointer'>
                         <div className='flex bg-gray-100 rounded-xl m-3 mt-2 p-2 items-center hover:bg-white'>
@@ -45,12 +51,16 @@ export const CreatesCampaign = () => {
                                     <p>$9000</p>
                                     <p>$ 6/2/2002</p>
                                     <p>Feed a Poor Man</p>
+
                                 </div>
                             </div>
-                            <div><button className=' bg-red-600 font-medium font-sans hover:bg-red-800 px-3 py-2 rounded-lg text-white text-sm '>Delete</button></div>
+                            <div className='flex gap-2'>
+                            <p className='text-center font-bold  bg-sky-200 rounded-lg p-2'>Pending</p>
+                                <button   className=' bg-red-600 font-medium font-sans hover:bg-red-800 px-3 py-2 rounded-lg text-white text-sm '>Delete</button>
+                            </div>
                         </div>
-                       
-                        
+
+
                     </div>
                 </div>
             </div>

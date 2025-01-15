@@ -2,8 +2,16 @@ import React from 'react'
 import UserSideBar from '../../../components/sidebar/Usersidebar';
 import pic from './../../../assets/images/Authimages/pic.png'
 import { Link } from 'react-router-dom';
+import { useUserZustands } from '../../../zustand/useUserZustands';
+import { FormatDate } from '../../../utils/FormateDate';
 export const DonatePerson = () => {
+    const { selectedCampaign , setSelectedCampaign } = useUserZustands()
+    const {formateDate} = FormatDate()
+    const formattedDate =formateDate(selectedCampaign?.createdAt)
+ 
+    
     return (
+        
         <div className="w-full flex flex-row min-h-screen bg-gray-100">
             <UserSideBar />
 
@@ -50,38 +58,38 @@ export const DonatePerson = () => {
                                 </div>
                                 <div>
                                     <div className='w-full mt-3'>
-                                        <progress className=" w- progress progress-info w-80" value="40" max="100">56</progress>
+                                        <progress className=" w- progress progress-info w-80" value={selectedCampaign.currentAmount} max="100">56</progress>
                                         <div className='flex justify-between'>
-                                            <p className='text-sky-800 text-sm'>Raised $500</p>
-                                            <p className='text-sky-800 text-sm'>Goal $28,000</p>
+                                            <p className='text-sky-800 text-sm'>Raised ${selectedCampaign?.currentAmount}</p>
+                                            <p className='text-sky-800 text-sm'>Goal ${selectedCampaign?.goalAmount}</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div className=' mt-10 px-10 grid grid-cols-3 gap-10 mb-10  pr-5'>
                                     <div>
                                         <p className='font-bold'>Person Name</p>
-                                        <p className='text-sm'>Monica</p>
+                                        <p className='text-sm'>{selectedCampaign?.fullName}</p>
                                     </div>
                                     <div>
-                                        <p className='font-bold'>Person Age</p>
-                                        <p className='text-sm'>21</p>
+                                        <p className='font-bold'>Purpose</p>
+                                        <p className='text-sm'>{selectedCampaign?.purpose}</p>
                                     </div>
                                     <div>
                                         <p className='font-bold'>Place</p>
-                                        <p className='text-sm'> Chennai</p>
+                                        <p className='text-sm'> {selectedCampaign?.place}</p>
                                     </div>
                                 
                                     <div>
                                         <p className='font-bold'>Address</p>
-                                        <p className='text-sm'>Kulamlumbur</p>
+                                        <p className='text-sm'>{selectedCampaign?.address}</p>
                                     </div>
                                     <div>
                                         <p className='font-bold'>Goal Amount</p>
-                                        <p className='text-sm'>21000</p>
+                                        <p className='text-sm'>{selectedCampaign?.goalAmount}</p>
                                     </div>
                                     <div>
-                                        <p className='font-bold'>Date Of Need</p>
-                                        <p className='text-sm'>Jan. 31, 2025</p>
+                                        <p className='font-bold'>Date Of applied</p>
+                                        <p className='text-sm'>{formattedDate}</p>
                                     </div>
                                 </div>
                             </div>
