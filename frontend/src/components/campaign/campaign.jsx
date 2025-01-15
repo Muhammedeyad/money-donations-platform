@@ -34,7 +34,7 @@ const {selectedCampaign, setSelectedCampaign}= useUserZustands()
         <td>{campaign.goalAmount}</td>
         <td>{campaign.currentAmount}</td>
         <th>
-            <Link onClick={()=>setSelectedCampaign(campaign)} to={'/user/makeDonation'}  className="btn bg-green-400 hover:bg-green-200 text-sm text-white px-4 py-2 ">Donate Now</Link>
+            <Link onClick={()=>setSelectedCampaign(campaign)} to={'/user/makeDonation'}  className="btn bg-green-400 hover:bg-green-200 text-sm text-white px-4 py-2 w-auto ">Donate Now</Link>
         </th>
     </tr>
     )

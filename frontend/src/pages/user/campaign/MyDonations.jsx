@@ -2,6 +2,8 @@ import React from 'react'
 import UserSideBar from '../../../components/sidebar/Usersidebar';
 import { Link } from 'react-router-dom'
 import { toast } from 'react-hot-toast'
+import { Usermobilesidebar } from '../../../components/sidebar/Usermobilesidebar';
+
 
 export const MyDonations = () => {
     return (
@@ -49,6 +51,7 @@ export const MyDonations = () => {
                     </table>
                 </div>
             </div>
+            <Usermobilesidebar/>
         </div>
     )
 }

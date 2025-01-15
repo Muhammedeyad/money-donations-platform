@@ -5,17 +5,17 @@ import { Homeimage } from '../../../components/svgContainer/Homeimage'
 import { Campaign } from '../../../components/campaign/campaign';
 import UserSideBar from '../../../components/sidebar/Usersidebar';
 import { userGetApprovedCampaings } from '../../../hooks/userGetApprovedCampaings';
+import { Usermobilesidebar } from '../../../components/sidebar/Usermobilesidebar';
 
 export const Dashboard = ({showDonateForm}) => {
   const {loading, campaigns} = userGetApprovedCampaings()
   
   
-  
     return (
-        <div className="w-full flex flex-row min-h-screen">
+        <div className="w-full flex flex-col md:flex-row min-h-screen relative">
         {/* Sidebar */}
         <UserSideBar/>
-      
+        
         {/* Main Content */}
         <div className="w-full bg-slate-200 overflow-y-scroll relative">
           <div className="bg-white m-2 px-5 py-2 rounded flex justify-between items-center sticky top-0 z-10">
@@ -35,7 +35,7 @@ export const Dashboard = ({showDonateForm}) => {
           <div className="overflow-x-auto">
             <table className="table">
                 {/* head */}
-                <thead>
+                {!campaigns?.length < 1 && <thead>
                     <tr>
                         
                         <th>Fullname</th>
@@ -44,7 +44,8 @@ export const Dashboard = ({showDonateForm}) => {
                         <th>Money raised</th>
                         <th></th>
                     </tr>
-                </thead>
+                </thead>}
+                {campaigns == undefined && <p className='text-sky-500 text-center'>no campaign found at this time</p>}
                 <tbody className=''>
                  
                  {campaigns?.map((campaign)=>(
@@ -61,6 +62,7 @@ export const Dashboard = ({showDonateForm}) => {
         
         
         </div>
+        <Usermobilesidebar/>
 
       </div>
       
