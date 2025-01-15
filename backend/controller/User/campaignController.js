@@ -6,7 +6,7 @@ const createCampaign = async (req, res) => {
     try {
         const { fullName, purpose, goalAmount, reason, place, address } = req.body
         if (!fullName || !purpose || !goalAmount || !reason || !place || !address) return res.status(400).json({ error: "please fill out all fields" })
-      
+
         const newCampaign = await campaignSchema.create({
             fullName: fullName,
             purpose: purpose,
@@ -33,7 +33,7 @@ const gettingApprovedCampaigns = async (req, res) => {
         const ApprovedCampaigns = await campaignSchema.find(
             {
                 status: "Approved",
-                createdBy: {$ne: authId}
+                createdBy: { $ne: authId }
             })
         if (!ApprovedCampaigns) return res.status(200).json({ error: "approved campaigns not getting error " })
         if (ApprovedCampaigns.length < 1) return res.status(200).json({ message: "No Campaign Found At This Time" })
@@ -58,4 +58,15 @@ const getMyCampaigns = async (req, res) => {
     }
 }
 
-module.exports = { createCampaign, gettingApprovedCampaigns, getMyCampaigns }
+
+const deletePendingCampaign = async (req, res) => {
+    try {
+        const pendingCampaignId = req.params.id
+        const deletedCampaign = await campaignSchema.deleteOne({ _id: pendingCampaignId })
+        res.status(200).json(deletedCampaign)
+    } catch (err) {
+        console.log(err.message, "user, comes from  deleleting pending campaign route");
+        res.status(400).json(err.message)
+    }
+}
+module.exports = { createCampaign, gettingApprovedCampaigns, getMyCampaigns, deletePendingCampaign }

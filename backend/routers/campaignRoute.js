@@ -1,6 +1,6 @@
 const express = require("express")
 const { getAuthUser } = require("../middleware/gettingAuthUser")
-const { createCampaign, gettingApprovedCampaigns, getMyCampaigns } = require("../controller/User/campaignController")
+const { createCampaign, gettingApprovedCampaigns, getMyCampaigns, deletePendingCampaign } = require("../controller/User/campaignController")
 const { getAllCampaigns, setCammpaignStatusApproved, setCammpaignStatusRejected, setCammpaignStatusClosed } = require("../controller/Admin/getAllCampaigns")
 const router = express.Router()
 
@@ -8,6 +8,7 @@ const router = express.Router()
 router.post("/create", getAuthUser, createCampaign) //status gonna be a pending
 router.get("/campaigns", getAuthUser, gettingApprovedCampaigns)  //getting approved campaigns for users
 router.get("/mycampaigns", getAuthUser, getMyCampaigns) //getting my campaigns 
+router.get("/campaign/:id/delete", getAuthUser, deletePendingCampaign) //delete pending campaign from user
 
 // admin routes
 router.get("/campaignsAdmin",getAuthUser,  getAllCampaigns) //get all campaigns for admins

@@ -88,7 +88,7 @@ export const DonatePerson = () => {
                                         <p className='text-sm'>{selectedCampaign?.goalAmount}</p>
                                     </div>
                                     <div>
-                                        <p className='font-bold'>Date Of applied</p>
+                                        <p className='font-bold'>Issued Date</p>
                                         <p className='text-sm'>{formattedDate}</p>
                                     </div>
                                 </div>

@@ -17,7 +17,7 @@ export const Home = () => {
         </svg>Donate Now </h1>
         
         <div className='flex flex-row gap-4 bg-slate-200'>
-          <Link to={"/"} className='btn px-10 bg-sky-400 text-white uppercase hover:bg-sky-700'>User Login</Link>
+          <Link to={"/login"} className='btn px-10 bg-sky-400 text-white uppercase hover:bg-sky-700'>User Login</Link>
           <Link to={"/"} className='btn px-10 bg-green-400 text-white uppercase hover:bg-green-700'>Admin Login</Link>
         </div>
       </div>

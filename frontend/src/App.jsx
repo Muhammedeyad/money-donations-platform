@@ -23,13 +23,13 @@ function App() {
       <div className='h-full w-full'>
         <Toaster/>
         <Routes>
-          <Route path='/' element={ authuser ?<Navigate to={"/user/dashboard"}/> :<Register />} />
+          <Route path='/signup' element={ authuser ?<Navigate to={"/user/dashboard"}/> :<Register />} />
           <Route path='/login' element={authuser? <Navigate to={"/user/dashboard"}/> : <Login />}/>
-          <Route path='/home' element={<Home/>}/>
+          <Route path='/' element={authuser ? <Navigate to={"/user/dashboard"}/> :<Home/>}/>
           <Route path='/user/dashboard' element={authuser ? <Dashboard/>: <Navigate to={"/"}/>}/>
-          <Route path='/user/makeDonation' element={<DonatePerson/>}/>
-          <Route path='/user/MyDonations' element={<MyDonations/>}/>
-          <Route path='/user/createsCampaign' element={<CreatesCampaign/>}/>
+          <Route path='/user/makeDonation' element={authuser ? <DonatePerson/>: <Navigate to={'/'}/>}/>
+          <Route path='/user/MyDonations' element={authuser ? <MyDonations/>: <Navigate to={'/'}/>}/>
+          <Route path='/user/createsCampaign' element={authuser ? <CreatesCampaign/>: <Navigate to={'/'}/>}/>
 
         </Routes>
 

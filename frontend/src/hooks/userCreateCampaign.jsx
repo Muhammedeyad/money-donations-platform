@@ -5,7 +5,9 @@ import toast from 'react-hot-toast'
 export const userCreateCampaign = () => {
     const [loading, setLoading] = useState(false)
     const {createdCampaign, setCreatedCampaign } = useUserZustands()
-
+    const total = 0
+   
+    
     const createCampaign =async (campaignCreated) => {
         const isvalid =isValidInput(campaignCreated)
         if(!isvalid) return
