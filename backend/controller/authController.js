@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt')
 const authModel = require('../models/authModel')
 const { generatingCookie } = require('../utils/generatingCookie')
 const authAdmin = require('../models/authAdmin')
+const { generatingCookieAdmin } = require('../utils/generatingCookieAdmin')
 
 const userRegister = async (req, res) => {
     try {
@@ -60,7 +61,7 @@ const adminRegister = async (req, res) => {
                 confirmPassword: bcryptPassword
             })
 
-            await generatingCookie(user._id, res)
+            await generatingCookieAdmin(user._id, res)
             return res.status(200).json(user)
         }
         res.status(400).json({ error: "this username already exists" })
@@ -77,7 +78,7 @@ const adminLogin =async (req, res) => {
        if(!registerdUser) return res.status(400).json({error: "username is incorrect"})
        const isSame = await bcrypt.compare(password, registerdUser.password)
        if(isSame){
-           await generatingCookie(registerdUser, res)
+           await generatingCookieAdmin(registerdUser, res)
            return res.status(200).json(registerdUser)
        }
        res.status(400).json({error: "make sure password is correct "})

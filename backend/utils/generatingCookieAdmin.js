@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken")
 
-const generatingCookie = async (userId, res) => {
+const generatingCookieAdmin = async (userId, res) => {
     try {
         
         
@@ -9,7 +9,7 @@ const generatingCookie = async (userId, res) => {
         })
         if (!token) return res.status(400).json({ error: "token was not created succesfully" })
     
-            const cookiel = res.cookie("auth", token, {
+            const cookiel = res.cookie("adminauth", token, {
                 maxAge: 15 * 24 * 60 * 60 * 1000,
                 httyOnly: true,
                 sameSite: "lax", // CSRF attacks cross-site request forgery attacks
@@ -20,4 +20,4 @@ const generatingCookie = async (userId, res) => {
     }
 }
 
-module.exports = { generatingCookie }
+module.exports = { generatingCookieAdmin }

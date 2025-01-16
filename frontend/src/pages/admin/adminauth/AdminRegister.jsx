@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { AdminUseRegister } from '../../../hooks/admins/AdminUseRegister'
 
 export const AdminRegister = () => {
   const [user, setUser] = useState({
@@ -7,10 +8,12 @@ export const AdminRegister = () => {
     password: "",
     confirmPassword:""
   })
+  const {adminRegister, loading} = AdminUseRegister()
 
   const handleSubmit=async (e)=>{
     e.preventDefault()
-    console.log('submitted');
+    await adminRegister(user)
+   
   }
   return (
     <div className='bg-sk'>

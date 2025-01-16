@@ -21,7 +21,7 @@ export const Dashboard = ({showDonateForm}) => {
           <div className="bg-white m-2 px-5 py-2 rounded flex justify-between items-center sticky top-0 z-10">
             <div>
               <p className="text-xs text-sky-900">Primary</p>
-              <h3 className="text-lg text-sky-500 font-bold">Dashboard</h3>
+              <h3 className="text-lg text-sky-500 font-bold">User Dashboard</h3>
             </div>
       
             <div className="avatar">

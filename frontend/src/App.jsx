@@ -9,13 +9,13 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 import { Home } from './pages/home/home'
 import { Dashboard } from './pages/user/campaign/Dashboard'
 import { DonatePerson } from './pages/user/donation/DonatePerson'
-import { Sample } from './pages/sample'
 import { CreatesCampaign } from './pages/user/campaign/CreatesCampaign'
 import { MyDonations } from './pages/user/campaign/MyDonations'
 import { useAuthContext } from './context/authContext'
 import { AdminDashboard } from './pages/admin/admin-dashboard/AdminDashboard'
 import { AdminLogin } from './pages/admin/adminauth/AdminLogin'
 import { AdminRegister } from './pages/admin/adminauth/AdminRegister'
+import { AdminManageUser } from './pages/admin/manageUsers/AdminManageUser'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -37,6 +37,7 @@ function App() {
           <Route path='/user/createsCampaign' element={authuser ? <CreatesCampaign/>: <Navigate to={'/'}/>}/>
 
         {/* ADMIN ROUTES */}
+        <Route path='/admin/manageUsers' element={<AdminManageUser/>}/>
         <Route path='/admin/dashboard' element={<AdminDashboard/>}/>
         <Route path='/admin/login' element={<AdminLogin/>}/>
         <Route path='/admin/register' element={<AdminRegister/>}/>

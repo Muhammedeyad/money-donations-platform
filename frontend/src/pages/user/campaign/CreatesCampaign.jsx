@@ -47,7 +47,7 @@ export const CreatesCampaign = () => {
             <UserSideBar />
             {/* Main Content */}
             <div className='bg-gray-100 p-2  md:m-3 rounded-lg flex flex-col w-full'>
-                <h4 className='text-start text-sky-400 font-bold text-xl mb-3'>Create Campaign</h4>
+                <h4 className='text-start text-sky-400 font-bold text-xl mb-3'>Apply Campaign</h4>
                 <div className='text-center font-bold text-lg bg-white  rounded-md p-3 mb-2 mt-2 '>Total Raised: <span className='text-green-400'>${total}</span></div>
                 <div className='w-full h-screen flex md:flex-row flex-col justify-between md:mt-5 mb-0 '>
                     <form onSubmit={(e) => handleSubmit(e)} className='w-full md:w-1/2 flex flex-col gap-4 h-full md:p-0 p-10'>
@@ -72,7 +72,7 @@ export const CreatesCampaign = () => {
                         </div>
 
 
-                        <button className='btn bg-green-400 rounded-2xl w-1/2 text-white mx-2'>Apply Now</button>
+                        <button className='btn bg-green-400 rounded-2xl w-1/2 text-white mx-2'>{loading ? <span className='loading loading-spinner'></span>: "Apply Now"} </button>
                     </form>
                     <div className='w-full md:ml-10 flex flex-col cursor-pointer md:mb-0 mb-32'>
                         {myAllCampaigns != undefined && myAllCampaigns.length > 0 && myAllCampaigns?.map((mycampaign) => (

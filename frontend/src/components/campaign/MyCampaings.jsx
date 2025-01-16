@@ -8,7 +8,10 @@ export const MyCampaings = ({mycampaign}) => {
     const {deletingPendingCampaign, loading}= userDeletePendingCampaign()
 
     async function deletePendingCampaign(){
-        await deletingPendingCampaign(mycampaign._id)
+        if(confirm("do you want to delete")){
+            await deletingPendingCampaign(mycampaign._id)
+        }
+        
     }
 
     return (
