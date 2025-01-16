@@ -58,7 +58,7 @@ export const Login = () => {
             
           </div>
          
-          <button className="btn  bg-sky-300 mt-10 w-full font-medium  text-xl text-md hover:bg-sky-200 text-white">Login</button>
+          <button className="btn  bg-sky-300 mt-10 w-full font-medium  text-xl text-md hover:bg-sky-200 text-white">{loading ? <span className='loading loading-spinner'></span>: "Login"} </button>
           <Link to={"/signup"} className='mt-1 text-blue-500 underline text-sm cursor-pointer'>don't have an account</Link>
         </div>
       </form>

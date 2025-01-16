@@ -10,7 +10,7 @@ export const Register = () => {
     password: "",
     confirmPassword: ""
   })
-  const { userRegister }= useUserRegister()
+  const {loading,  userRegister }= useUserRegister()
 
   const handleSubmit=async (e)=>{
     e.preventDefault()
@@ -72,7 +72,7 @@ export const Register = () => {
               <input type="password" className="grow" placeholder='confirmPassword' onChange={(e)=>{setUser({...user, confirmPassword: e.target.value})}} value={user.confirmPassword} required/>
             </label>
           </div>
-          <button className="btn  bg-sky-300 mt-10 w-full font-medium  text-xl text-md hover:bg-sky-200 text-white">Register</button>
+          <button className="btn  bg-sky-300 mt-10 w-full font-medium  text-xl text-md hover:bg-sky-200 text-white">{loading ? <span className='loading loading-spinner'></span>: "Register"}</button>
           <Link to={"/login"} className='mt-1 text-blue-500 underline text-sm cursor-pointer'>i already have an account</Link>
         </div>
       </form>

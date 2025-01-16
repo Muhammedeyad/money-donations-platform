@@ -13,6 +13,10 @@ import { Sample } from './pages/sample'
 import { CreatesCampaign } from './pages/user/campaign/CreatesCampaign'
 import { MyDonations } from './pages/user/campaign/MyDonations'
 import { useAuthContext } from './context/authContext'
+import { AdminDashboard } from './pages/admin/admin-dashboard/AdminDashboard'
+import { AdminLogin } from './pages/admin/adminauth/AdminLogin'
+import { AdminRegister } from './pages/admin/adminauth/AdminRegister'
+
 function App() {
   const [count, setCount] = useState(0)
   const {authuser } =useAuthContext()
@@ -23,6 +27,7 @@ function App() {
       <div className='h-full w-full'>
         <Toaster/>
         <Routes>
+          {/* USER ROUTES */}
           <Route path='/signup' element={ authuser ?<Navigate to={"/user/dashboard"}/> :<Register />} />
           <Route path='/login' element={authuser? <Navigate to={"/user/dashboard"}/> : <Login />}/>
           <Route path='/' element={authuser ? <Navigate to={"/user/dashboard"}/> :<Home/>}/>
@@ -31,6 +36,10 @@ function App() {
           <Route path='/user/MyDonations' element={authuser ? <MyDonations/>: <Navigate to={'/'}/>}/>
           <Route path='/user/createsCampaign' element={authuser ? <CreatesCampaign/>: <Navigate to={'/'}/>}/>
 
+        {/* ADMIN ROUTES */}
+        <Route path='/admin/dashboard' element={<AdminDashboard/>}/>
+        <Route path='/admin/login' element={<AdminLogin/>}/>
+        <Route path='/admin/register' element={<AdminRegister/>}/>
         </Routes>
 
       </div>
