@@ -1,7 +1,12 @@
 import React from 'react'
 import { FaSignOutAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { AdminUserLogout } from '../../../hooks/admins/AdminUserLogout';
 export const AdminMobileSidebar = () => {
+    const {loading, logoutuser} = AdminUserLogout()
+    async function logout(){
+        await logoutuser()
+          }
     return (
         <ul className="menu flex flex-row w-full justify-around bg-base-200 rounded-box md:hidden block lg:hidden  fixed bottom-0 ">
             <li>
@@ -38,7 +43,7 @@ export const AdminMobileSidebar = () => {
             </li>
         
             <li>
-                <Link  className="tooltip tooltip-right" data-tip="Logout">
+                <Link onClick={()=>logout() } className="tooltip tooltip-right" data-tip="Logout">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         className="w-8 h-8"

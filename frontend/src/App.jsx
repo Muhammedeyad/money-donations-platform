@@ -16,10 +16,13 @@ import { AdminDashboard } from './pages/admin/admin-dashboard/AdminDashboard'
 import { AdminLogin } from './pages/admin/adminauth/AdminLogin'
 import { AdminRegister } from './pages/admin/adminauth/AdminRegister'
 import { AdminManageUser } from './pages/admin/manageUsers/AdminManageUser'
+import { useAdminContext } from './context/AdminAuthContext'
 
 function App() {
   const [count, setCount] = useState(0)
   const {authuser } =useAuthContext()
+  const {adminUser}= useAdminContext()
+console.log(adminUser);
 
   
   return (
@@ -37,10 +40,10 @@ function App() {
           <Route path='/user/createsCampaign' element={authuser ? <CreatesCampaign/>: <Navigate to={'/'}/>}/>
 
         {/* ADMIN ROUTES */}
-        <Route path='/admin/manageUsers' element={<AdminManageUser/>}/>
-        <Route path='/admin/dashboard' element={<AdminDashboard/>}/>
-        <Route path='/admin/login' element={<AdminLogin/>}/>
-        <Route path='/admin/register' element={<AdminRegister/>}/>
+        <Route path='/admin/manageUsers' element={adminUser ? <AdminManageUser/>: <Navigate to={'/admin/login'}/>}/>
+        <Route path='/admin/dashboard' element={adminUser ? <AdminDashboard/> : <Navigate to={'/admin/login'}/>}/>
+        <Route path='/admin/login' element={ adminUser ? <Navigate to={'/admin/dashboard'}/>: <AdminLogin/>}/>
+        <Route path='/admin/register' element={adminUser ? <Navigate  to={'/admin/dashboard'}/>: <AdminRegister/>}/>
         </Routes>
 
       </div>

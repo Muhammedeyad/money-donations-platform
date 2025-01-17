@@ -3,13 +3,17 @@ import { FaTachometerAlt, FaSignOutAlt, FaBullhorn, FaHandHoldingHeart } from 'r
 import { toast } from 'react-hot-toast';
 import { Link } from 'react-router-dom'
 import { useAdminZustand } from '../../../zustand/useAdminZustand';
+import { AdminUserLogout } from '../../../hooks/admins/AdminUserLogout';
 
 export const AdminSidebar = () => {
   const {selectedTab, setSelectedTab}= useAdminZustand()
-
+  const {logoutuser, loading} = AdminUserLogout()
   function clickedTab(clickedTbName){
     setSelectedTab(clickedTbName)
     
+  }
+  async function logout(){
+await logoutuser()
   }
 
   return (
@@ -35,7 +39,7 @@ export const AdminSidebar = () => {
               </li>
             </Link>
             <a
-              
+              onClick={()=>logout()}
               className="hover:bg-green-100 py-3 text-sm w-full pl-2 rounded text-green-800"
             >
               <button className="flex gap-2 items-center">

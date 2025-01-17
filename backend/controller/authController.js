@@ -100,4 +100,13 @@ const logout =(req, res)=>{
         res.status(400).json({error: "error while logout"})
     }
 }
-module.exports = { userRegister, userLogin, adminRegister, adminLogin, logout}
+const adminLogout =(req, res)=>{
+    try {
+        res.cookie("adminauth", "", { maxAge: 0})
+        res.status(200).json("logout successfully")
+    } catch (error) {
+        console.log(error.message, "error while logout");
+        res.status(400).json({error: "error while logout"})
+    }
+}
+module.exports = { userRegister, userLogin, adminRegister, adminLogin, logout, adminLogout}
