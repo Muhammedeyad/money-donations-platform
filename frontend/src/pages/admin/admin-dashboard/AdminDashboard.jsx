@@ -3,8 +3,11 @@ import { AdminSidebar } from '../../../components/admin/sidebar/adminSidebar';
 import { ManageCampaigns } from '../../../components/admin/campaigns/ManageCampaigns';
 import { ManageDonations } from '../../../components/admin/donations/ManageDonations';
 import { AdminMobileSidebar } from '../../../components/admin/sidebar/adminMobileSidebar';
+import { AdminGetAllCampaigns } from '../../../hooks/admins/AdminGetAllCampaigns';
 
 export const AdminDashboard = () => {
+  const { loading, campaigns } = AdminGetAllCampaigns()
+
   return (
     <>
       <div className='flex w-full h-full'>
@@ -39,16 +42,17 @@ export const AdminDashboard = () => {
                           <th>FullName</th>
                           <th>Purpose</th>
                           <th>Goal Amount</th>
+                          <th>Status</th>
                           <th className='text-center'>Action</th>
                         </tr>
                       </thead>
                       <tbody>
 
+                        {campaigns?.map((campaign) => (
+                          <ManageCampaigns campaign={campaign} />
+                        ))}
 
-                        <ManageCampaigns />
-                        <ManageCampaigns />
-                        <ManageCampaigns />
-                        <ManageCampaigns />
+
                       </tbody>
                       {/* foot */}
 
@@ -69,17 +73,17 @@ export const AdminDashboard = () => {
                   {/* head */}
                   <thead>
                     <tr>
-                
+
                       <th>FullName</th>
                       <th>Purpose</th>
                       <th>Amount paid</th>
                     </tr>
                   </thead>
                   <tbody>
-                   
-                   <ManageDonations/>
-                   <ManageDonations/>
-                   <ManageDonations/>
+
+                    <ManageDonations />
+                    <ManageDonations />
+                    <ManageDonations />
                   </tbody>
                 </table>
               </div>
@@ -88,7 +92,7 @@ export const AdminDashboard = () => {
           </div>
         </div>
 
-    <AdminMobileSidebar/>
+        <AdminMobileSidebar />
       </div>
     </>
   )

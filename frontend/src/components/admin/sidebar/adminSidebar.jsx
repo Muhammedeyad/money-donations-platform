@@ -13,7 +13,10 @@ export const AdminSidebar = () => {
     
   }
   async function logout(){
-await logoutuser()
+    if(confirm('do you want to logout')){
+      await logoutuser()
+    }
+
   }
 
   return (

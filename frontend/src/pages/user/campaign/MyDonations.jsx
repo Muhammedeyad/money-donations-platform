@@ -11,7 +11,7 @@ export const MyDonations = () => {
             {/* Sidebar */}
             <UserSideBar />
             {/* Main Content */}
-            <div className='bg-gray-100 p-2 m-3 rounded-lg flex flex-col w-full'>
+            <div className='bg-gray-100 p-2 md:m-3 rounded-lg flex flex-col w-full'>
                 <h4 className='text-start text-sky-400 font-bold text-xl mb-3'>My Donations</h4>
                 <div className='text-center font-bold text-lg bg-white  rounded-md p-3 mb-2 mt-2 '>Donated <span className='text-green-400'>History</span></div>
                 <div className="overflow-x-auto mt-3 text-center w-full ">

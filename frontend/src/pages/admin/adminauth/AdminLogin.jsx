@@ -56,7 +56,7 @@ export const AdminLogin = () => {
             
           </div>
          
-          <button className="btn  bg-green-300 mt-10 w-full font-medium  text-xl text-md hover:bg-green-200 text-white">Login</button>
+          <button className="btn  bg-green-300 mt-10 w-full font-medium  text-xl text-md hover:bg-green-200 text-white">{loading ? <span className='loading loading-spinner'></span>: "Login"}</button>
           <Link to={"/admin/register"} className='mt-1 text-green-350 underline text-sm cursor-pointer'>don't have an account</Link>
         </div>
       </form>

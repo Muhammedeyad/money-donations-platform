@@ -5,7 +5,9 @@ import { AdminUserLogout } from '../../../hooks/admins/AdminUserLogout';
 export const AdminMobileSidebar = () => {
     const {loading, logoutuser} = AdminUserLogout()
     async function logout(){
-        await logoutuser()
+        if(confirm('do you want to logout')){
+            await logoutuser()
+          }
           }
     return (
         <ul className="menu flex flex-row w-full justify-around bg-base-200 rounded-box md:hidden block lg:hidden  fixed bottom-0 ">

@@ -23,6 +23,7 @@ export const AdminUseLogin = () => {
         }
         setAdminUser(data)
         localStorage.setItem('adminauth', JSON.stringify(data))
+        toast.success("login successfully")
     } catch (error) {
       toast.error(error.message)
       console.log(error.message);

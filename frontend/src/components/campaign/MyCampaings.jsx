@@ -33,9 +33,9 @@ export const MyCampaings = ({mycampaign}) => {
                 </div>
             </div>
             <div className='flex gap-2'>
-                <p className='text-center font-bold  bg-sky-200 rounded-lg p-2'>{mycampaign?.status}</p>
-                { mycampaign.status=="Approved" ||
-                <button onClick={()=> deletePendingCampaign()}  className='  bg-red-600 md:block hidden font-medium font-sans hover:bg-red-800 px-3 py-2 rounded-lg text-white text-sm '>Delete</button>}
+                <p className={`text-center font-bold  ${mycampaign.status== "approved " ?"bg-sky-200": mycampaign.status=="Pending"? "": "bg-red-500 text-white"} rounded-lg p-2`}>{mycampaign?.status}</p>
+                { mycampaign.status=="Pending"?
+                <button onClick={()=> deletePendingCampaign()}  className='  bg-red-600 md:block hidden font-medium font-sans hover:bg-red-800 px-3 py-2 rounded-lg text-white text-sm '>Delete</button>:""}
             </div>
         </div>
 

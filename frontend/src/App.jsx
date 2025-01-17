@@ -22,7 +22,6 @@ function App() {
   const [count, setCount] = useState(0)
   const {authuser } =useAuthContext()
   const {adminUser}= useAdminContext()
-console.log(adminUser);
 
   
   return (
@@ -40,8 +39,8 @@ console.log(adminUser);
           <Route path='/user/createsCampaign' element={authuser ? <CreatesCampaign/>: <Navigate to={'/'}/>}/>
 
         {/* ADMIN ROUTES */}
-        <Route path='/admin/manageUsers' element={adminUser ? <AdminManageUser/>: <Navigate to={'/admin/login'}/>}/>
-        <Route path='/admin/dashboard' element={adminUser ? <AdminDashboard/> : <Navigate to={'/admin/login'}/>}/>
+        <Route path='/admin/manageUsers' element={adminUser ? <AdminManageUser/>: <Navigate to={'/'}/>}/>
+        <Route path='/admin/dashboard' element={adminUser ? <AdminDashboard/> : <Navigate to={'/'}/>}/>
         <Route path='/admin/login' element={ adminUser ? <Navigate to={'/admin/dashboard'}/>: <AdminLogin/>}/>
         <Route path='/admin/register' element={adminUser ? <Navigate  to={'/admin/dashboard'}/>: <AdminRegister/>}/>
         </Routes>

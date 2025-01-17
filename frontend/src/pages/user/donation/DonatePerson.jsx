@@ -27,24 +27,40 @@ export const DonatePerson = () => {
                 </div>
                 </div>
                 <div className='w-full h-screen flex md:flex-row flex-col justify-between mt-5 '>
-                    <form className='w-full md:w-1/2 flex flex-col gap-4 h-full items-start mb-10 md:mb-0 md:items-stretch'>
+                <form className="w-full md:w-1/2 flex flex-col gap-4 h-full items-stretch mb-10">
+  <div className="w-full">
+    <input
+      type="text"
+      className="px-3 py-2 w-full outline-none"
+      placeholder="FullName"
+    />
+  </div>
+  <div className="w-full">
+    <input
+      type="text"
+      className="px-3 py-2 w-full outline-none"
+      placeholder="Purpose"
+    />
+  </div>
+  <div className="w-full">
+    <input
+      type="text"
+      className="px-3 py-2 w-full outline-none"
+      placeholder="Goal Amount"
+    />
+  </div>
+  <div className="w-full">
+    <textarea
+      type="text"
+      className="px-3 py-5 w-full outline-none"
+      placeholder="Add a Reference"
+    />
+  </div>
+  <button className="btn bg-green-400 rounded-2xl w-full text-white">
+    Donate Now
+  </button>
+</form>
 
-                        <div>
-                            <input type="text" className=' px-3 py-2 w-full mx-5 outline-none' placeholder='FullName' />
-                        </div>
-                        <div>
-                            <input type="text" className=' px-3 py-2 w-full mx-5 outline-none' placeholder='Purpose' />
-                        </div>
-                        <div>
-                            <input type="text" className=' px-3 py-2 w-full mx-5 outline-none' placeholder='Goal Amount' />
-                        </div>
-                        <div>
-                            <textarea type="text" className=' px-3 py-5 w-full mx-5 outline-none' placeholder='Add a Reference' />
-                        </div>
-
-
-                        <button className='btn bg-green-400 rounded-2xl w-1/2 text-white mx-2'>Donate Now</button>
-                    </form>
                     <div className='w-full md:w-1/2  flex flex-col cursor-pointer md:mb-0 mb-10'>
 
                         <div className=' flex flex-col items-center '>
