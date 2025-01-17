@@ -109,4 +109,27 @@ const adminLogout =(req, res)=>{
         res.status(400).json({error: "error while logout"})
     }
 }
-module.exports = { userRegister, userLogin, adminRegister, adminLogin, logout, adminLogout}
+
+const getAllUsers = async(req, res)=>{
+    try {
+        const allUsers = await authModel.find()
+        if(allUsers.length <= 0) return res.status(200).json([])
+        res.status(200).json(allUsers)
+    } catch (error) {
+        console.log(error.message, "error comes from getAllUser for Admin");
+        res.status(400).json({error: error.message})
+    }
+}
+const deleteSingleUser = async(req, res)=>{
+    try {
+        const {id:userId} = req.params
+        const deleteUser = await authModel.findOne({_id: userId})
+        const deletedUser = await authModel.deleteOne({_id: userId})
+        if(!deleteUser) return res.status(400).json({error: "no user found with this _id"})
+        res.status(200).json(deleteUser)
+    } catch (error) {
+        console.log(error.message, "error comes from deleting single user for Admin");
+        res.status(400).json({error: error.message})
+    }
+}
+module.exports = { userRegister, userLogin, adminRegister, adminLogin, logout, adminLogout, getAllUsers, deleteSingleUser}

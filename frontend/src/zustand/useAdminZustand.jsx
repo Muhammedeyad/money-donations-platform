@@ -12,7 +12,9 @@ export const useAdminZustand = create((set) => ({
   rejectedCampaigns: "",
   setRejectedCampaigns: (rejectedCampaign)=> set({rejectedCampaigns: rejectedCampaign?._id}),
   closedCampaigns: "",
-  setClosedCampaigns: (closedCampaign)=> set({closedCampaigns: closedCampaign?._id})
+  setClosedCampaigns: (closedCampaign)=> set({closedCampaigns: closedCampaign?._id}),
+  deleteCampaigns: "",
+  setDeletedCampaigns: (deletedCampaign)=> set({deleteCampaigns: deletedCampaign?._id})
 
 }));
 

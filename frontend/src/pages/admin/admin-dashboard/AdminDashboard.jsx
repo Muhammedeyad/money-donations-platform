@@ -36,15 +36,15 @@ export const AdminDashboard = () => {
                   <div className="overflow-x-auto">
                     <table className="table">
                       {/* head */}
-                      <thead>
-                        <tr>
+                      <thead className={` ${campaigns == "" ? "text-center": ''}`}>
+                       {campaigns?.length > 0? <tr>
 
                           <th>FullName</th>
                           <th>Purpose</th>
                           <th>Goal Amount</th>
                           <th>Status</th>
                           <th className='text-center'>Action</th>
-                        </tr>
+                        </tr>: <span className=' text-center  text-sm text-red-400'>no campaign has been created</span>}
                       </thead>
                       <tbody>
 

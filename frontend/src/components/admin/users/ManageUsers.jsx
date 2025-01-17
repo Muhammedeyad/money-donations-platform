@@ -1,6 +1,9 @@
 import React from 'react'
+import { FormatDate } from '../../../utils/FormateDate'
 
-export const ManageUsers = () => {
+export const ManageUsers = ({user}) => {
+  const {formateDate}= FormatDate()
+  const formattedDate = formateDate(user.createdAt)
   return (
     <tr>
                    
@@ -14,17 +17,17 @@ export const ManageUsers = () => {
           </div>
         </div>
         <div>
-          <div className="font-bold">Harry Potter</div>
+          <div className="font-bold">{user?.username}</div>
           <div className="text-sm opacity-50">India</div>
         </div>
       </div>
     </td>
     <td>
-      User Role
+      <span className='font-bold'>{user.role}</span> 
       <br />
       <span className="badge badge-ghost badge-sm"> Donate and Create Campaign</span>
     </td>
-    <td>23/12/2023</td>
+    <td>{formattedDate}</td>
     <th>
       <button className="bg-red-500 hover:bg-red-900 px-5 py-3 rounded-lg text-white ">delete</button>
     </th>

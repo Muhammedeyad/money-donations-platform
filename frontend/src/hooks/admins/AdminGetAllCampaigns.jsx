@@ -3,7 +3,7 @@ import { useAdminZustand } from '../../zustand/useAdminZustand'
 
 export const AdminGetAllCampaigns = () => {
     const [loading, setLoading] = useState(false)
-    const {setAllCampaigns, allCampaigns, approvedCampaigns, rejectedCampaigns, closedCampaigns} = useAdminZustand()
+    const {setAllCampaigns, allCampaigns, approvedCampaigns, rejectedCampaigns, closedCampaigns, deleteCampaigns} = useAdminZustand()
     const [ campaigns, setCampaings ]= useState()
     useEffect(()=>{
         const getAllCampaigns= async()=>{
@@ -29,6 +29,6 @@ export const AdminGetAllCampaigns = () => {
                 }
         }   
         getAllCampaigns()
-    }, [allCampaigns?._id, approvedCampaigns, rejectedCampaigns, closedCampaigns])
+    }, [allCampaigns?._id, approvedCampaigns, rejectedCampaigns, closedCampaigns, deleteCampaigns])
     return {loading, campaigns}
 }

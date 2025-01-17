@@ -3,8 +3,12 @@ import { AdminSidebar } from '../../../components/admin/sidebar/adminSidebar';
 import { AdminMobileSidebar } from '../../../components/admin/sidebar/adminMobileSidebar';
 import { FaAddressCard } from "react-icons/fa";
 import { ManageUsers } from '../../../components/admin/users/ManageUsers';
+import { AdminGetAllUsers } from '../../../hooks/admins/AdminGetAllUsers';
 
 export const AdminManageUser = () => {
+  const {loading, users} = AdminGetAllUsers()
+
+
   return (
     <div className='flex w-full h-full'>
       <AdminSidebar />
@@ -70,9 +74,11 @@ export const AdminManageUser = () => {
                 </thead>
                 <tbody >
                   {/* row 1 */}
-              <ManageUsers/>
-              <ManageUsers/>
-              <ManageUsers/>
+                  {users?.map((user)=>(
+                    <ManageUsers user={user}/>
+                  ))}
+              
+           
             
                 </tbody>
                 {/* foot */}
