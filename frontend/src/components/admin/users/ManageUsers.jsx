@@ -1,9 +1,11 @@
 import React from 'react'
 import { FormatDate } from '../../../utils/FormateDate'
+import { AdminDeleteSingleUser } from '../../../hooks/admins/AdminDeleteSingleUser'
 
 export const ManageUsers = ({user}) => {
   const {formateDate}= FormatDate()
   const formattedDate = formateDate(user.createdAt)
+  const { loading, deleteUser} = AdminDeleteSingleUser()
   return (
     <tr>
                    
@@ -29,7 +31,7 @@ export const ManageUsers = ({user}) => {
     </td>
     <td>{formattedDate}</td>
     <th>
-      <button className="bg-red-500 hover:bg-red-900 px-5 py-3 rounded-lg text-white ">delete</button>
+      <button className="bg-red-500 hover:bg-red-900 px-5 py-3 rounded-lg text-white "onClick={()=>{ confirm("do you want to delete")? deleteUser(user?._id): "" }}>delete</button>
     </th>
   </tr>
   )

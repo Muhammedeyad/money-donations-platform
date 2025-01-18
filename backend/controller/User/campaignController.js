@@ -69,4 +69,17 @@ const deletePendingCampaign = async (req, res) => {
         res.status(400).json(err.message)
     }
 }
-module.exports = { createCampaign, gettingApprovedCampaigns, getMyCampaigns, deletePendingCampaign }
+
+
+const getSelectedCampaign = async (req, res) => {
+    try {
+        const { id: selectedCampaignId } = req.params
+        const selectedcampaign = await campaignSchema.findOne({ _id: selectedCampaignId })
+        if (!selectedcampaign) return res.status(400).json({ error: 'no campaign found with this id' })
+        res.status(200).json(selectedcampaign)
+    } catch (error) {
+        console.log(err.message, "user, comes from  getting selected  campaign route");
+        res.status(400).json(err.message)
+    }
+}
+module.exports = { createCampaign, gettingApprovedCampaigns, getMyCampaigns, deletePendingCampaign, getSelectedCampaign }

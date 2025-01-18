@@ -14,7 +14,10 @@ export const useAdminZustand = create((set) => ({
   closedCampaigns: "",
   setClosedCampaigns: (closedCampaign)=> set({closedCampaigns: closedCampaign?._id}),
   deleteCampaigns: "",
-  setDeletedCampaigns: (deletedCampaign)=> set({deleteCampaigns: deletedCampaign?._id})
+  setDeletedCampaigns: (deletedCampaign)=> set({deleteCampaigns: deletedCampaign?._id}),
+  
+  deleteUsers: "",
+  setDeletedUsers: (deleteduser)=> set({deleteUsers: deleteduser?._id})
 
 }));
 

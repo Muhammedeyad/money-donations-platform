@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
+import { useAdminZustand } from '../../zustand/useAdminZustand'
 
 export const AdminGetAllUsers = () => {
     const [loading, setLoading] = useState(false)
     const [users, setUsers] = useState()
-
+    const {deleteUsers} = useAdminZustand()
     useEffect(()=>{
         const getAllUsers=async ()=>{
             setLoading(true)
@@ -27,6 +28,6 @@ export const AdminGetAllUsers = () => {
             }
         }
         getAllUsers()
-    }, [])
+    }, [deleteUsers])
     return  {loading, users}
 }

@@ -22,6 +22,8 @@ app.use(cors({
 app.use("/", require('./routers/auth'))
 app.use("/api/campaign", require("./routers/campaignRoute"))
 app.use("/api/admin", require("./routers/campaignRoute"))
+app.use("/api/donations", require("./routers/donations"))
+
 
 // app listening
 app.listen(PORT, ()=>{

@@ -20,6 +20,7 @@ export const userGetApprovedCampaings = () => {
                     throw new Error(data.message)
                 }
                 setCampaigns(data)
+              
             } catch (error) {
 
                 console.log(error.message);

@@ -7,7 +7,12 @@ import { useUserZustands } from '../../zustand/useUserZustands'
 
 export const Campaign = ({campaign}) => {
 const {selectedCampaign, setSelectedCampaign}= useUserZustands()
-    
+
+    const getSelectedcampaign = (campaignId)=>{
+        setSelectedCampaign(campaign)
+ 
+        
+    }
     return (
         <tr>
      
@@ -34,7 +39,9 @@ const {selectedCampaign, setSelectedCampaign}= useUserZustands()
         <td>{campaign.goalAmount}</td>
         <td>{campaign.currentAmount}</td>
         <th>
-            <Link onClick={()=>setSelectedCampaign(campaign)} to={'/user/makeDonation'}  className="btn bg-green-400 hover:bg-green-200 text-sm text-white px-4 py-2 w-auto ">Donate Now</Link>
+            <Link onClick={()=>{
+                  localStorage.setItem('selectedItem', JSON.stringify(campaign))
+                getSelectedcampaign(campaign._id)}} to={'/user/makeDonation'}  className="btn bg-green-400 hover:bg-green-200 text-sm text-white px-4 py-2 w-auto ">Donate Now</Link>
         </th>
     </tr>
     )
