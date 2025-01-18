@@ -1,11 +1,14 @@
 import React from 'react'
+import { FormatDate } from '../../../utils/FormateDate'
 
-export const ManageDonations = () => {
+export const ManageDonations = ({donation}) => {
+  const {formateDate} =  FormatDate()
+  const formattedDate = formateDate(donation.createdAt)
   return (
     <tr>
-    <td className='font-bold'>Cy Ganderton</td>
-    <td className='text-xs text-green-900'>Feed Street Dogs</td>
-    <td className='text-green-400 font-bold'>$ 12000</td>
+    <td className='font-bold'>{donation.fullName}</td>
+    <td className='text-xs text-green-900'>{formattedDate}</td>
+    <td className='text-green-400 font-bold'>$ {donation.donationAmount}</td>
     
   </tr>
   )

@@ -4,10 +4,13 @@ import { ManageCampaigns } from '../../../components/admin/campaigns/ManageCampa
 import { ManageDonations } from '../../../components/admin/donations/ManageDonations';
 import { AdminMobileSidebar } from '../../../components/admin/sidebar/adminMobileSidebar';
 import { AdminGetAllCampaigns } from '../../../hooks/admins/AdminGetAllCampaigns';
+import { AdminGetAllDonations } from '../../../hooks/admins/AdminGetAllDonations';
 
 export const AdminDashboard = () => {
   const { loading, campaigns } = AdminGetAllCampaigns()
+  const {allDonations} = AdminGetAllDonations()
 
+  
   return (
     <>
       <div className='flex w-full h-full'>
@@ -75,15 +78,16 @@ export const AdminDashboard = () => {
                     <tr>
 
                       <th>FullName</th>
-                      <th>Purpose</th>
+                      <th>Donation issued</th>
                       <th>Amount paid</th>
                     </tr>
                   </thead>
                   <tbody>
-
-                    <ManageDonations />
-                    <ManageDonations />
-                    <ManageDonations />
+{allDonations?.map((donation)=>(
+  <ManageDonations donation={donation} />
+))}
+                    
+                  
                   </tbody>
                 </table>
               </div>

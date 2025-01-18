@@ -29,4 +29,16 @@ const getAllDonations= async (req,res)=>{
     res.status(400).json(err.message)
   }
 }
-module.exports = {createDonation, getAllDonations}
+
+const getMyDonations= async(req, res)=>{
+  const loggedPersonId = req.userId
+  try {
+    const myDonations = await donationSchmea.find({donationMadeby: loggedPersonId})
+    if(!myDonations) return res.status(400).json({error: "no donations found error"})
+    res.status(200).json(myDonations)
+  } catch (error) {
+    console.log(error.message, 'error comes from getMyDonation Route');
+    res.status(400).json(err.message)
+  }
+}
+module.exports = {createDonation, getAllDonations, getMyDonations}

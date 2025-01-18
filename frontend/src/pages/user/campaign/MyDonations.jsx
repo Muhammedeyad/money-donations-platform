@@ -3,9 +3,15 @@ import UserSideBar from '../../../components/sidebar/Usersidebar';
 import { Link } from 'react-router-dom'
 import { toast } from 'react-hot-toast'
 import { Usermobilesidebar } from '../../../components/sidebar/Usermobilesidebar';
+import { UserGetMyDonations } from '../../../hooks/getMyDonations';
+import { MyDonation0 } from '../../../components/donation/MyDonation0';
 
 
 export const MyDonations = () => {
+    const {myDonations, loading} = UserGetMyDonations()
+    console.log(myDonations);
+    
+    
     return (
         <div className="w-full flex flex-row min-h-screen">
             {/* Sidebar */}
@@ -21,32 +27,15 @@ export const MyDonations = () => {
                             <tr className='text-sky-900 font-bold'>
                                 <th></th>
                                 <th>FullName</th>
-                                <th>Purpose</th>
+                                <th>Donation issued</th>
+                                <th>Payment Method</th>
                                 <th>Amount Paid</th>
                             </tr>
                         </thead>
                         <tbody className='text-sky-600'>
-                            {/* row 1 */}
-                            <tr>
-                                <th>1</th>
-                                <td>Cy Ganderton</td>
-                                <td>Quality Control Specialist</td>
-                                <td className='text-green-700 font-bold'>10000</td>
-                            </tr>
-                            {/* row 2 */}
-                            <tr>
-                                <th>2</th>
-                                <td>Hart Hagerty</td>
-                                <td>Desktop Support Technician</td>
-                                <td className='text-green-700 font-bold'>2222</td>
-                            </tr>
-                            {/* row 3 */}
-                            <tr>
-                                <th>3</th>
-                                <td>Brice Swyre</td>
-                                <td>Tax Accountant</td>
-                                <td className='text-green-700 font-bold'>21000</td>
-                            </tr>
+                          {myDonations?.map((donation,idx)=>(
+                            <MyDonation0 donation={donation} idx={idx}/>
+                          ))}
                         </tbody>
                     </table>
                 </div>

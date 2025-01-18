@@ -3,6 +3,7 @@ const { getAuthUser } = require("../middleware/gettingAuthUser")
 const { createCampaign, gettingApprovedCampaigns, getMyCampaigns, deletePendingCampaign, getSelectedCampaign } = require("../controller/User/campaignController")
 const { getAllCampaigns, setCammpaignStatusApproved, setCammpaignStatusRejected, setCammpaignStatusClosed, deleteCampaignAdmin } = require("../controller/Admin/getAllCampaigns")
 const { gettingAuthAdmin } = require("../middleware/gettingAuthAdmin")
+const { getMyDonations } = require("../controller/User/DonationController")
 const router = express.Router()
 
 // user routes
@@ -11,7 +12,7 @@ router.get("/campaigns", getAuthUser, gettingApprovedCampaigns)  //getting appro
 router.get("/mycampaigns", getAuthUser, getMyCampaigns) //getting my campaigns 
 router.get("/campaign/:id/delete", getAuthUser, deletePendingCampaign) //delete pending campaign from user
 router.get("/:id/selectedCampaign", getAuthUser, getSelectedCampaign) //getting selected campaign 
-
+router.get("/myCompaign",getAuthUser, getMyDonations)
 
 // admin routes
 router.get("/campaignsAdmin",gettingAuthAdmin,  getAllCampaigns) //get all campaigns for admins
