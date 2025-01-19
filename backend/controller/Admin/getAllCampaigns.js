@@ -1,4 +1,5 @@
 const campaignSchema = require("../../models/campaigns/campaignSchema");
+const { getReceiverSocketId, io } = require("../../socket/socket");
 
 const getAllCampaigns = async (req, res) => {
     try {
@@ -25,6 +26,8 @@ const setCammpaignStatusApproved = async (req, res) => {
         if (!ExistingCampaign) return res.status(400).json({ error: "no campaign found at this time" })
         ExistingCampaign.status = "Approved"
         await ExistingCampaign.save()
+        // SOCKET FEATURES 
+        io.emit("statusApproved", ExistingCampaign)
         res.status(200).json(ExistingCampaign)
 
     } catch (error) {

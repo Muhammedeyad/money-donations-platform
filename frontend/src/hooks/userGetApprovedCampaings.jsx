@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
+import { useUserZustands } from '../zustand/useUserZustands'
 
 export const userGetApprovedCampaings = () => {
     const [loading, setLoading] = useState(false)
     const [campaigns, setCampaigns] = useState()
-
+    const {setApprovedCampaigns, approvedCampaigns}= useUserZustands()
     useEffect(() => {
         async function getApprovedCampaigns() {
             setLoading(true)
@@ -20,7 +21,7 @@ export const userGetApprovedCampaings = () => {
                     throw new Error(data.message)
                 }
                 setCampaigns(data)
-              
+                setApprovedCampaigns(data[0])
             } catch (error) {
 
                 console.log(error.message);
@@ -30,6 +31,6 @@ export const userGetApprovedCampaings = () => {
             }
         }
         getApprovedCampaigns()
-    }, [])
+    }, [approvedCampaigns])
     return { loading, campaigns }
 }

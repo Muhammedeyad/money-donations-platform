@@ -8,6 +8,7 @@ const { generatingCookieAdmin } = require('../utils/generatingCookieAdmin')
 const userRegister = async (req, res) => {
     try {
         const { username, password, confirmPassword } = req.body
+        if(!username || !password || !confirmPassword) return res.status(400).json({error: "all fields are required"})
         if (password != confirmPassword) return res.status(400).json({ message: "ensure confirmpassword is same" })
         const existingUser = await authModel.findOne({ username: username })
         if (!existingUser) {
@@ -30,6 +31,7 @@ const userRegister = async (req, res) => {
 const userLogin =async (req, res) => {
  try {
     const { username, password } = req.body
+    if(!username || !password) return res.status(400).json({error: "all fields are required"})
     const registerdUser = await authModel.findOne({username})
     if(!registerdUser) return res.status(400).json({error: "username is incorrect"})
     const isSame = await bcrypt.compare(password, registerdUser.password)
@@ -37,7 +39,7 @@ const userLogin =async (req, res) => {
         await generatingCookie(registerdUser, res)
         return res.status(200).json(registerdUser)
     }
-    res.status(400).json({error: "make sure password is correct "})
+    return res.status(400).json({error: "make sure password is correct "})
 
  } catch (error) {
     return res.status(400).json({error: "error came from login route"})
@@ -74,6 +76,7 @@ const adminRegister = async (req, res) => {
 const adminLogin =async (req, res) => {
     try {
        const { username, password } = req.body
+       if(!username || !password) return res.status(400).json({error: "all fields are required"})
        const registerdUser = await authAdmin.findOne({username})
        if(!registerdUser) return res.status(400).json({error: "username is incorrect"})
        const isSame = await bcrypt.compare(password, registerdUser.password)

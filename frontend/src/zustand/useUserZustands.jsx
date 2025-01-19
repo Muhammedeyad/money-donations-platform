@@ -13,5 +13,8 @@ export const useUserZustands = create((set) => ({
             deletedCampaign: [...state.deletedCampaign, deletedCampaignItem],
         })),
     userDonations: "",
-    setUserDonations: (donation)=> set({userDonations: donation._id})
+    setUserDonations: (donation)=> set({userDonations: donation._id}),
+    
+    approvedCampaigns: "",
+    setApprovedCampaigns: (campaign)=> set({approvedCampaigns: campaign._id})
 }));

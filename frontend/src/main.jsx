@@ -5,6 +5,7 @@ import App from './App.jsx'
 import { BrowserRouter } from 'react-router-dom'
 import { AuthenticationContextProvider } from './context/authContext.jsx'
 import { AdminAuthContextProvider } from './context/AdminAuthContext.jsx'
+import { SocketContextProvider } from './context/socketio/Socketio.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -12,8 +13,9 @@ createRoot(document.getElementById('root')).render(
       <AdminAuthContextProvider>
       <BrowserRouter>
 
+    <SocketContextProvider>
         <App />
-
+        </SocketContextProvider>
       </BrowserRouter>
       </AdminAuthContextProvider>
     </AuthenticationContextProvider>
