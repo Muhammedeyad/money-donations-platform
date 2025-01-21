@@ -20,7 +20,7 @@ export const AdminSidebar = () => {
   }
 
   return (
-    <div className="w-1/4 bg-green-200 md:block hidden sticky top-0 h-screen ml-3">
+    <div className="w-1/4 bg-gradient-to-r from-green-200 to-green-400 md:block hidden sticky top-0 h-screen ml-3">
           <ul className="flex flex-col gap-4 px-5 w-full items-start text-start py-5 mt-10">
             <Link onClick={()=> clickedTab("dashboard")}
               to="/admin/dashboard"

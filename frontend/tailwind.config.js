@@ -10,4 +10,7 @@ export default {
   plugins: [
     require('daisyui'),
   ],
+  daisyui: {
+    themes:["light", "cupcake", 'cyberpunk','valentine', 'retro','coffee', 'autumn', 'aqua']
+  }
 }

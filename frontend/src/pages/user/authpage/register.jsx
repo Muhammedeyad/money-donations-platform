@@ -21,17 +21,17 @@ export const Register = () => {
   return (
     <div className='bg-sk'>
     <div className='w-full flex flex-col md:flex-row  h-screen items-center justify-center'>
-      <div className='w-full  hidden md:flex md:justify-center bg-sky-200 h-screen items-center md:block'>
-        <div className=' flex flex-col gap-5 w-full items-center'>
+      <div className='w-full  hidden md:flex md:justify-center bg-primary h-screen items-center md:block bg-gradient-to-r from-blue-400 to-blue-600 text-white'>
+        <div className=' flex flex-col gap-5 w-full items-center '>
         <SignupImage/>
-         <p className='text-black-400 font-medium text-sky-800 text-md w-1/2 text-center'>Join us today! Create an account to start donating and making a difference. </p>
+         <p className='text-black-400 font-medium text-gray-200 text-md w-1/2 text-center'>Join us today! Create an account to start donating and making a difference. </p>
         </div>
         
       </div>
 
       <form onSubmit={(e)=> handleSubmit(e)} className='md:w-1/2 w-full p-10 md:p-0 md:mr-24 mb-10 md:ml-20'>
         <div>
-          <h4 className='text-center font-medium font-sans text-3xl md:text-4xl mb-10 text-sky-400 '>User Register</h4>
+          <h4 className='text-center font-bold font-mono text-3xl md:text-4xl mb-10 text-primary text-gradient-to-r from-blue-400 text-blue-600 '>User Register</h4>
           <div className='flex flex-col gap-7'>
 
             <label className="input input-bordered flex items-center gap-2">
@@ -56,7 +56,7 @@ export const Register = () => {
                 <path
                   d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z" />
               </svg>
-              <input type="text" className="grow" placeholder="password" onChange={(e)=> setUser({...user, password:e.target.value})} value={user.password} required />
+              <input type="password" className="grow" placeholder="password" onChange={(e)=> setUser({...user, password:e.target.value})} value={user.password} required />
             </label>
             <label className="input input-bordered flex items-center gap-2">
               <svg
@@ -72,8 +72,8 @@ export const Register = () => {
               <input type="password" className="grow" placeholder='confirmPassword' onChange={(e)=>{setUser({...user, confirmPassword: e.target.value})}} value={user.confirmPassword} required/>
             </label>
           </div>
-          <button className="btn  bg-sky-300 mt-10 w-full font-medium  text-xl text-md hover:bg-sky-200 text-white">{loading ? <span className='loading loading-spinner'></span>: "Register"}</button>
-          <Link to={"/login"} className='mt-1 text-blue-500 underline text-sm cursor-pointer'>i already have an account</Link>
+          <button className="btn  bg-gradient-to-r from-blue-400 to-blue-600  bg-primary mt-10 w-full font-medium  rounded-full text-xl text-md hover:bg-blue-600 text-white transform hover:scale-105 transition-transform duration-300 ease-in-out">{loading ? <span className='loading loading-spinner'></span>: "Register"}</button>
+          <Link to={"/login"} className='mt-1 text-blue-500 underline text-sm cursor-pointer'>Already have an account?</Link>
         </div>
       </form>
     </div>

@@ -17,7 +17,7 @@ export const AdminDashboard = () => {
         <AdminSidebar />
 
         {/* Main Content */}
-        <div className="w-full bg-slate-200 overflow-y-scroll relative">
+        <div className="w-full pt-2 bg-slate-200 overflow-y-scroll relative">
           <div className="bg-white m-2 px-5 py-2 rounded flex justify-between items-center sticky top-0 z-10">
             <div>
               <p className="text-xs text-green-900">primary</p>
@@ -26,7 +26,7 @@ export const AdminDashboard = () => {
 
             <div className="avatar">
               <div className="ring ring-offset-base-100 w-10 rounded-full ring-offset-2">
-                <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                <img src="https://cdn0.iconfinder.com/data/icons/communication-line-10/24/account_profile_user_contact_person_avatar_placeholder-512.png" />
               </div>
             </div>
           </div>

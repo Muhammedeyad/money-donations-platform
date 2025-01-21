@@ -18,7 +18,7 @@ export const ManageCampaigns = ({campaign}) => {
             <div className="avatar">
               <div className="mask mask-squircle h-10 w-10">
                 <img
-                  src="https://img.daisyui.com/images/profile/demo/2@94.webp"
+                  src="https://cdn0.iconfinder.com/data/icons/communication-line-10/24/account_profile_user_contact_person_avatar_placeholder-512.png"
                   alt="Avatar Tailwind CSS Component" />
               </div>
             </div>

@@ -6,7 +6,7 @@ import { useUserZustands } from '../../../zustand/useUserZustands';
 import { FormatDate } from '../../../utils/FormateDate';
 import { Usermobilesidebar } from '../../../components/sidebar/Usermobilesidebar';
 import { userMakeDonation } from '../../../hooks/userMakeDonation';
-export const DonatePerson = () => {
+export const DonatePerson = ({theme}) => {
     const { selectedCampaign, setSelectedCampaign } = useUserZustands()
     const { formateDate } = FormatDate()
     const formattedDate = formateDate(selectedCampaign?.createdAt)
@@ -53,7 +53,7 @@ export const DonatePerson = () => {
             <UserSideBar />
 
             <div className='bg-gray-100 p-2 m-3 rounded-lg flex flex-col w-full'>
-                <h4 className='text-start text-sky-400 font-bold text-xl mb-3'>Donate Here</h4>
+                <h4 className='text-start text-blue-800 font-bold text-xl mb-3'>Donate Here</h4>
                 <div className='text-center font-bold text-lg bg-white  rounded-md pl-4 pb-1 text-sky-900 '><div className="breadcrumbs text-sm mt-3">
                     <ul>
                         <li><Link to={`/user/dashboard`}><a>DashBoard</a></Link></li>
@@ -63,7 +63,7 @@ export const DonatePerson = () => {
                 </div>
                 </div>
                 <div className='w-full h-screen flex md:flex-row flex-col justify-between mt-5 '>
-                    <form onSubmit={(e) => handleSubmit(e)} className="w-full md:w-1/2 flex flex-col gap-4 h-full items-stretch mb-10">
+                    <form onSubmit={(e) => handleSubmit(e)} className="w-full md:w-1/2 flex flex-col gap-4 h-full items-stretch mb-10 text-gray-700">
                         <div className="w-full">
                             <input
                                 type="text"
@@ -101,16 +101,16 @@ export const DonatePerson = () => {
                             />
                         </div>
                         <div className="w-full">
-                            <select  value={donatingPerson.paymentMethod} className="px-3 py-5 w-full outline-none text-gray-400" placeholder="Payment Method" onChange={(e)=> setDonatingPerson({...donatingPerson, paymentMethod: e.target.value})}>
+                            <select   value={donatingPerson.paymentMethod} className="px-3 py-5 w-full outline-none text-gray-800" placeholder="Payment Method" onChange={(e)=> setDonatingPerson({...donatingPerson, paymentMethod: e.target.value})}>
                                 <option value="" disabled selected>Payment Method</option>
-                                <option value="credit_card">Credit Card</option>
+                                <option  value="credit_card">Credit Card</option>
                                 <option value="debit_card">Debit Card</option>
                                 <option value="paypal">PayPal</option>
                                 <option value="net_banking">Net Banking</option>
                             </select>
                         </div>
 
-                        <button className="btn bg-green-400 rounded-2xl w-full text-white">
+                        <button className={`btn transform hover:scale-105 transition-transform duration-300 ease-in-out bg-primary rounded-full w-1/2 text-white hover:bg-blue-600 ${theme == 'light'? "bg-gradient-to-r from-blue-400 to-blue-600": "" }`}>
                             Donate Now
                         </button>
                     </form>
@@ -121,9 +121,9 @@ export const DonatePerson = () => {
 
                             <h1 className='text-sky-900 font-bold mb-1'>person detail</h1>
                             <div>
-                                <div className="avatar mt-1 border border-blue-500 p-1">
+                                <div className="avatar   p-1">
                                     <div className="w-24 rounded">
-                                        <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                                        <img src="https://cdn0.iconfinder.com/data/icons/communication-line-10/24/account_profile_user_contact_person_avatar_placeholder-512.png" className='border-none'/>
                                     </div>
                                 </div>
 

@@ -10,6 +10,7 @@ const campaignSchema = new mongoose.Schema({
     reason: { type: String, required: true},
     place: { type: String, required: true},
     address: { type: String, required: true},
+    pic: {type: String, required: false},
     createdBy: {type: mongoose.Schema.ObjectId, ref: "user"}, //findout who made the campaign
 }, {timestamps: true})
 

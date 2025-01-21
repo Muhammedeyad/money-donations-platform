@@ -4,8 +4,8 @@ const campaignSchema = require("../../models/campaigns/campaignSchema")
 const createCampaign = async (req, res) => {
     const campaignCreatedUser = req.userId
     try {
-        const { fullName, purpose, goalAmount, reason, place, address } = req.body
-        if (!fullName || !purpose || !goalAmount || !reason || !place || !address) return res.status(400).json({ error: "please fill out all fields" })
+        const { fullName, purpose, goalAmount, reason, place, address, pic  } = req.body
+        if (!fullName || !purpose || !goalAmount || !reason || !place ) return res.status(400).json({ error: "please fill out all fields" })
 
         const newCampaign = await campaignSchema.create({
             fullName: fullName,
@@ -14,6 +14,7 @@ const createCampaign = async (req, res) => {
             reason: reason,
             place: place,
             address: address,
+            pic: pic,
             createdBy: campaignCreatedUser._id
         })
         res.status(200).json(newCampaign)

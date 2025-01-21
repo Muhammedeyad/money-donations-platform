@@ -5,10 +5,12 @@ import { DonatePerson } from '../../pages/user/donation/DonatePerson'
 import { Link } from 'react-router-dom'
 import { useUserZustands } from '../../zustand/useUserZustands'
 
-export const Campaign = ({campaign}) => {
+export const Campaign = ({campaign, theme}) => {
 const {selectedCampaign, setSelectedCampaign}= useUserZustands()
+const {tab, setSelectedTab}= useUserZustands()
 
     const getSelectedcampaign = (campaignId)=>{
+        
         setSelectedCampaign(campaign)
  
         
@@ -21,8 +23,8 @@ const {selectedCampaign, setSelectedCampaign}= useUserZustands()
                 <div className="avatar">
                     <div className="mask mask-squircle h-12 w-12">
                         <img
-                            src="https://img.daisyui.com/images/profile/demo/3@94.webp"
-                            alt="Avatar Tailwind CSS Component" />
+                            src='https://cdn0.iconfinder.com/data/icons/communication-line-10/24/account_profile_user_contact_person_avatar_placeholder-512.png'
+                            alt="NO PIC " />
                     </div>
                 </div>
                 <div>
@@ -40,8 +42,9 @@ const {selectedCampaign, setSelectedCampaign}= useUserZustands()
         <td>{campaign.currentAmount}</td>
         <th>
             <Link onClick={()=>{
+                setSelectedTab("")
                   localStorage.setItem('selectedItem', JSON.stringify(campaign))
-                getSelectedcampaign(campaign._id)}} to={'/user/makeDonation'}  className="btn bg-green-400 hover:bg-green-200 text-sm text-white px-4 py-2 w-auto ">Donate Now</Link>
+                getSelectedcampaign(campaign._id)}} to={'/user/makeDonation'}  className={`btn bg-primary hover:bg-blue-500 text-sm text-sky-200 px-4 py-2 w-auto rounded-full transform hover:scale-105 transition-transform duration-300 ease-in-out ${ theme== "light"? "bg-gradient-to-r from-blue-400 to-blue-600": ""} text-white `}>Donate Now</Link>
         </th>
     </tr>
     )
