@@ -17,7 +17,7 @@ export const userCreateCampaign = () => {
                 method: 'POST',
                 credentials: 'include',
                 headers: { 'Content-Type': 'application/json'},
-                body: JSON.stringify({fullName: campaignCreated.fullName, purpose: campaignCreated.purpose, goalAmount: campaignCreated.goalAmount, place: campaignCreated.place, address: "North Street", reason: campaignCreated.reason, address: campaignCreated.address || "north street", pic: campaignCreated.pic})            })
+                body: JSON.stringify({fullName: campaignCreated.fullName, purpose: campaignCreated.purpose, goalAmount: campaignCreated.goalAmount, place: campaignCreated.place, reason: campaignCreated.reason, address: campaignCreated.address || "north street", pic: campaignCreated.pic})            })
             const data = await res.json()
             if(data.error){
                 throw new Error(data.error)

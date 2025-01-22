@@ -29,6 +29,6 @@ export const AdminGetAllCampaigns = () => {
                 }
         }   
         getAllCampaigns()
-    }, [allCampaigns?._id || approvedCampaigns || rejectedCampaigns || closedCampaigns || deleteCampaigns])
+    }, [allCampaigns?._id || approvedCampaigns || rejectedCampaigns || closedCampaigns || deleteCampaigns, closedCampaigns, deleteCampaigns])
     return {loading, campaigns}
 }
