@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { SignupImage } from '../../../components/svgContainer/SignupImage'
 import { Homeimage } from '../../../components/svgContainer/Homeimage'
 
@@ -9,7 +9,13 @@ import { Usermobilesidebar } from '../../../components/sidebar/Usermobilesidebar
 
 export const Dashboard = ({ showDonateForm, theme,setTheme }) => {
   const { loading, campaigns } = userGetApprovedCampaings()
-
+  const [ profile, setProfile ] = useState(false)
+  const [profileData, setProfileData] = useState("")
+  useEffect(()=>{
+    setProfileData(JSON.parse(localStorage.getItem('userauth')))
+    console.log(profileData);
+    
+  }, [])
 
   return (
     <div className="w-full flex flex-col md:flex-row min-h-screen relative">
@@ -24,15 +30,6 @@ export const Dashboard = ({ showDonateForm, theme,setTheme }) => {
             <h3 className="text-lg text-sky-900 font-bold">User Dashboard</h3>
           </div>
           <div className='flex justify-center items-center gap-10'>
-
-
-
-
-
-
-
-
-
 
 
             <div className="dropdown md:block hidden">
@@ -99,11 +96,24 @@ export const Dashboard = ({ showDonateForm, theme,setTheme }) => {
             </div>
 
 
+        {/* Open the modal using document.getElementById('ID').showModal() method */}
+
+<dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
+  <div className="modal-box">
+    <h3 className="font-bold text-lg">Hello {profileData?.username}!</h3>
+    <p className="py-4">Start Donate Now And Make A Difference In The World</p>
+    <div className="modal-action">
+      <form method="dialog">
+        {/* if there is a button in form, it will close the modal */}
+        <button className="btn">Close Profile</button>
+      </form>
+    </div>
+  </div>
+</dialog>
 
 
 
-
-            <div className="avatar ">
+            <div className="avatar cursor-pointer"onClick={()=>{setProfile(!profile); document.getElementById('my_modal_5').showModal()}}>
               <div className="ring ring-offset-base-100 w-10  rounded-full ring-offset-2">
                 <img src="https://cdn0.iconfinder.com/data/icons/communication-line-10/24/account_profile_user_contact_person_avatar_placeholder-512.png" />
               </div>

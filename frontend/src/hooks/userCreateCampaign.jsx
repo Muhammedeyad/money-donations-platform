@@ -7,7 +7,6 @@ export const userCreateCampaign = () => {
     const {createdCampaign, setCreatedCampaign } = useUserZustands()
     const total = 0
    
-    
     const createCampaign =async (campaignCreated) => {
         const isvalid =isValidInput(campaignCreated)
         if(!isvalid) return
